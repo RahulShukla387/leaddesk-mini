@@ -2,12 +2,14 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import LandingPage from './components/LandingPage'
+import AdminPanel from './pages/AdminPanel'
 function App() {
 
   return (
     <>
-     <h1>project initialized</h1>
+     <LandingPage></LandingPage>
+     <AdminPanel></AdminPanel>
     </>
   )
 }
