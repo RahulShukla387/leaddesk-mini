@@ -1,17 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import LandingPage from './components/LandingPage'
-import AdminPanel from './pages/AdminPanel'
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
+import LandingPage from './pages/LandingPage';
+import Login from './pages/Login';
+import AdminPanel from './pages/AdminPanel';
+
+export default function App() {
   return (
-    <>
-     <LandingPage></LandingPage>
-     <AdminPanel></AdminPanel>
-    </>
-  )
-}
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Public Landing Page */}
+          <Route path="/" element={<LandingPage />} />
 
-export default App
+          {/* Admin Login Route */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Protected Admin Dashboard */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminPanel />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Catch-all redirect to homepage */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+}
