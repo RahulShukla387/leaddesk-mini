@@ -1,7 +1,7 @@
 // Architectue  
 
 leaddesk-mini/
-├── client/                      # Frontend (React + Tailwind)
+├── leaddesk-mini-frontend/                      # Frontend (React + Tailwind)
 │   ├── public/
 │   └── src/
 │       ├── components/
@@ -18,7 +18,7 @@ leaddesk-mini/
 │       │   └── api.js          # Axios / Fetch API client
 │       └── App.jsx
 │
-├── server/                      # Backend (Node.js + Express)
+├── leaddesk-mini-backend/                      # Backend (Node.js + Express)
 │   ├── config/
 │   │   └── db.js               # Mongoose connection logic
 │   ├── controllers/
